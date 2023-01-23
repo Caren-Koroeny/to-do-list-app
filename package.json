@@ -1,0 +1,25 @@
+{
+  "name": "to-do-list-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack --mode development",
+    "start": "webpack serve --open",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Caren-Koroeny/to-do-list-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Caren-Koroeny/to-do-list-app/issues"
+  },
+  "homepage": "https://github.com/Caren-Koroeny/to-do-list-app#readme",
+  "devDependencies": {
+    "html-webpack-plugin": "^5.5.0"
+  }
+}
