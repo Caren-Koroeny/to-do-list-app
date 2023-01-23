@@ -28,7 +28,8 @@ const loadTask = () => {
     
     <div class="task-container">
       <form class="task-form">
-        <input type="checkbox" class="checkbox" <p class="task-description">${sortedList[i].description} 
+      
+        <input type="checkbox" class="checkbox" <p class="task-description">&nbsp&nbsp${sortedList[i].description} 
         <i class="fas fa-ellipsis-v pointer edit-task" aria-hidden="true"></i>
         </p>
         

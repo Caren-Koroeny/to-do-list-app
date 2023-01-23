@@ -3,13 +3,11 @@
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  max-width: 400px;
+  max-width: 500px;
   border-radius: 3px;
   justify-content: center;
-  margin-top: 50px;
+  margin-top: 150px;
   text-align: left;
-
-  /* border: 1px solid black; */
   box-shadow: rgba(20, 18, 18, 0.2) 0 2px 8px 0;
 }
 
@@ -33,13 +31,9 @@
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  max-width: 400px;
   border-radius: 3px;
   justify-content: center;
-  margin-top: 150px;
-  height: 60vh;
-
-  /* border: 1px solid black; */
+  margin-top: 40%;
 }
 
 .todo-header {
@@ -72,7 +66,15 @@
 .add-new-task-container {
   display: flex;
   flex-direction: row;
-  gap: 170px;
+  gap: 150px;
+}
+
+.input {
+  border: 0;
+  background-color: transparent;
+  color: #525252;
+  font-size: 15px;
+  width: 89%;
 }
 
 input[type=text] {
@@ -100,11 +102,10 @@ i {
 }
 
 .edit-task {
-  margin-left: 90%;
+  margin-left: 98%;
 }
 
 .task-container {
-  padding: 15px;
   display: flex;
   flex-direction: column;
   border-bottom: 1px solid #ebebeb;
