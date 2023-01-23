@@ -25,13 +25,13 @@ const loadTask = () =>{
 
   for (let i = 0; i < sortedList.length; i += 1) {
     listContainer.innerHTML += `
+    
     <div class="task-container">
       <form class="task-form">
-        <input type="checkbox" class="checkbox">
+        <input type="checkbox" class="checkbox"  <p class="task-description">${sortedList[i].description}</p>
       </form>
-    <p class="task-description">${sortedList[i].description}</p>
   </div>
-  <hr>
+  
     `;
   }
 };
