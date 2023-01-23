@@ -56,7 +56,7 @@
 
 > Link to deployed project.
 
-- [Live Demo Link](https://mrprotocoll.github.io/todo-list-microverse/)
+- coming soon...
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -80,7 +80,7 @@ Clone this repository to your desired folder using the above command:
 
 ```sh
   cd my-folder
-  git clone https://github.com/mrprotocoll/todo-list-microverse.git
+  git clone  git clone https://github.com/caren-koroeny/to-dolist-app.git
 ```
 
 ### Install
@@ -107,11 +107,11 @@ Open the index.html file using a web browser
 
 > Mention all of the collaborators of this project.
 
-👤 **mrprotocoll**
+👤 **CarenSiya**
 
-- GitHub: [@mrprotocoll](https://github.com/mrprotocoll)
-- Twitter: [@dprotocoll](https://twitter.com/dprotocoll)
-- LinkedIn: [@mrprotocoll](https://www.linkedin.com/in/mrprotocoll)
+- GitHub: [@carensiya ](https://github.com/Caren-Koroeny)
+- Twitter: [@carensiya](https://twitter.com/home)
+- LinkedIn: [LinkedIn](www.linkedin.com/in/caren-siya-a89712180)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

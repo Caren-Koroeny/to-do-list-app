@@ -1,6 +1,6 @@
-import "./style.css";
+import './style.css';
 
-const listContainer = document.querySelector("#todo-list");
+const listContainer = document.querySelector('#todo-list');
 
 const LIST = [
   {
@@ -20,7 +20,7 @@ const LIST = [
   },
 
 ];
-const loadTask = () =>{
+const loadTask = () => {
   const sortedList = LIST.sort((item1, item2) => item1.index - item2.index);
 
   for (let i = 0; i < sortedList.length; i += 1) {
