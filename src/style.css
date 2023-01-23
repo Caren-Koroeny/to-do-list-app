@@ -21,6 +21,9 @@
 .todo-header #refresh{
     color: grey;
 }
+#refresh{
+    margin-right: 0px;
+}
 
 .main-container{
     text-align: left;
@@ -74,7 +77,7 @@
   }
   
   input:focus {
-    border-color: rgb(185, 95, 122);
+    border-color: rgb(92, 89, 90);
   }
  
   .task-description{
@@ -87,9 +90,16 @@
     padding-left: 15px;
     padding-bottom: 15px;
   }
+  i {
+    color: #a1a1a1;
+   
+}
+.edit-task{
+    margin-left: 90%;
+}
 
-  
   .task-container{
+    padding: 15px;
     display: flex;
     flex-direction: column;
     border-bottom: 1px solid #ebebeb;
