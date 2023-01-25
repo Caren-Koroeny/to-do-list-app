@@ -54,6 +54,10 @@
   margin-left: -40px;
 }
 
+li {
+  list-style: none;
+}
+
 .todo-list > li {
   font-size: 14px;
   font-weight: 300;
@@ -90,22 +94,21 @@ input:focus {
   padding: 30px;
   font-weight: 500;
 }
+
 .fa-trash-can {
   padding: 10px;
   margin-left: 150px;
   cursor: pointer;
 }
-.fa-reply{
+
+.fa-reply {
   cursor: pointer;
 }
+
 .todo-input {
   font-style: italic;
   padding-left: 15px;
   padding-bottom: 15px;
-  
-}
-li{
-  list-style: none;
 }
 
 i {
