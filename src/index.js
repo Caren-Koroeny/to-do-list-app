@@ -3,7 +3,7 @@ import './style.css';
 let todoTask = [];
 const taskWrapper = document.querySelector(".todo-activities");
 const newTask = document.getElementById("task-description");
-const newTaskBtn = document.getElementById("addTask");
+const newTaskBtn = document.getElementById("new-task");
 const reset = document.getElementById("refresh")
 
 const clearallTask = () => {
@@ -31,19 +31,22 @@ const refreshItems = (todoTask) =>{
 // remove/Delete task 
 const removeTask = (index) => {
   const myLocalStorage = getListFromLocalStorage();
-  myLocalStorage.splice(index, 1);
+  myLocalStorage.splice(index - 1, 1);
 };
 // Edit Task
 const editTask = (taskdescription, index) => {
-  todoTask[index - 1].description = taskdescription;
-  editTask(e.target.value, task.index,todoTask);
+  for(let j = 0; j < todoTask.length; j++) {
+    if(todoTask[j] === index) {
+        todoTask[j]+='*';
+    }
+}
+  todoTask[index - 1].description =taskdescription;
   addListToLocalStorage();
 };
-// Display/Read Items
+// Read Items
 const createTask = () => {
   taskWrapper.innerHTML = "";
   const mylocal = getListFromLocalStorage();
-
   mylocal.forEach((task) => {
     const li = document.createElement("li");
     const checkbox =  document.createElement("input","fas", "fa-trash-can");
@@ -65,11 +68,12 @@ const createTask = () => {
     const deleteTask = document.createElement('i');
     taskDesc.addEventListener('change', (e) => {
       e.preventDefault();
+      editTask(e.target.value, task.index);
       taskDesc.blur();
     });
     deleteTask.classList.add("fas", "fa-trash-can")
     deleteTask.addEventListener('click', () => {
-      removeTask(task.index);
+      removeTask(task.index[0]);
       refreshItems(mylocal);
       addListToLocalStorage();
       createTask();
@@ -80,22 +84,31 @@ const createTask = () => {
   });
 };
 
-// Create Items
 const addToTasks = () => {
   const len = todoTask.length;
   todoTask.push({
     checked: false,
     description: newTask.value,
-    index: len + 0,
+    index: len + 1,
   });
   newTask.value = '';
   addListToLocalStorage();
   createTask();
+  
 };
+
+// prevent empty submition  
 newTaskBtn.addEventListener('click', (e) => {
   e.preventDefault();
-  addToTasks();
+  let input = document.getElementById('task-description').value;
+  if(input.length === 0){
+    return false
+  }else{
+    addToTasks();
+  }
+  
 });
+
 
 document.addEventListener('DOMContentLoaded', () => {
   getListFromLocalStorage()
@@ -107,5 +120,4 @@ reset.addEventListener('click', () => {
   addListToLocalStorage()
   createTask();
 });
-
 
