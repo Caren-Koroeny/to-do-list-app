@@ -4,12 +4,8 @@ let todoTask = [];
 const taskWrapper = document.querySelector(".todo-activities");
 const newTask = document.getElementById("task-description");
 const newTaskBtn = document.getElementById("addTask");
-const clearAll = document.querySelector(".clear-completed-task");
 const reset = document.getElementById("refresh")
 
-const clearallTask = () => {
-  todoTask = [];
-};
 
 const addListToLocalStorage = () => {
   localStorage.setItem("myTodoTasks", JSON.stringify(todoTask));
@@ -23,6 +19,33 @@ const getListFromLocalStorage = () => {
   return todoTask;
 };
 
+const addToTasks = () => {
+  const len = todoTask.length;
+  todoTask.push({
+    checked: false,
+    description: newTask.value,
+    index: len + 0,
+  });
+  newTask.value = '';
+  addListToLocalStorage();
+  createTask();
+};
+newTaskBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  addToTasks();
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  getListFromLocalStorage()
+  createTask();
+});
+
+reset.addEventListener('click', () => {
+  clearallTask()
+  addListToLocalStorage()
+  createTask();
+});
+
 const refreshItems = (todoTask) =>{
   for(let i = 0; i < todoTask.length; i += 1){
     const indexes = i + 1;
@@ -35,13 +58,15 @@ const removeTask = (index) => {
   myLocalStorage.splice(index - 1, 1);
 };
 
-// const editTask = (taskdescription, index) => {
-//   todoTask[index - 1].description = taskdescription;
-//   addListToLocalStorage();
-// };
+const editTask = (taskdescription, index) => {
+  todoTask[index - 1].description = taskdescription;
+  editTask(e.target.value, task.index);
+  addListToLocalStorage();
+};
 
 const createTask = () => {
   taskWrapper.innerHTML = "";
+  e.preventDefault();
   const mylocal = getListFromLocalStorage();
 
   mylocal.forEach((task) => {
@@ -81,42 +106,4 @@ const createTask = () => {
     taskWrapper.appendChild(li);
   });
 };
-
-const ClearcompletedTasks = () => {
-  todoTask = todoTask.filter((item) => item.checked === false);
-  reset(todoTask);
-  addListToLocalStorage();
-  createTask();
-};
-clearAll.addEventListener('click', () => {
-  ClearcompletedTasks();
-});
-
-const addToTasks = () => {
-  const len = todoTask.length;
-  todoTask.push({
-    checked: false,
-    description: newTask.value,
-    index: len + 0,
-  });
-  newTask.value = '';
-  addListToLocalStorage();
-  createTask();
-};
-newTaskBtn.addEventListener('click', (e) => {
-  e.preventDefault();
-  addToTasks();
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-  getListFromLocalStorage()
-  createTask();
-});
-
-reset.addEventListener('click', () => {
-  clearallTask()
-  addListToLocalStorage()
-  createTask();
-});
-
 
