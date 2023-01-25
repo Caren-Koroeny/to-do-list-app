@@ -37,9 +37,9 @@ const editTask = (taskdescription, index) => {
     if (todoTask[j] === index) {
       todoTask[j] += '*';
     }
+    todoTask[index - 1].description = taskdescription;
+    addListToLocalStorage();
   }
-  todoTask[index - 1].description = taskdescription;
-  addListToLocalStorage();
 };
 // Read Items
 const createTask = () => {
