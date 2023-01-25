@@ -90,11 +90,19 @@ input:focus {
   padding: 30px;
   font-weight: 500;
 }
+.fa-trash-can {
+  padding: 10px;
+  margin-left: 150px;
+}
 
 .todo-input {
   font-style: italic;
   padding-left: 15px;
   padding-bottom: 15px;
+  
+}
+li{
+  list-style: none;
 }
 
 i {

@@ -1,7 +1,5 @@
 import './style.css';
 
-const listContainer = document.querySelector('#todo-list');
-
 let todoTask = [];
 const taskWrapper = document.querySelector(".todo-activities");
 const newTask = document.getElementById("task-description");
@@ -37,10 +35,10 @@ const removeTask = (index) => {
   myLocalStorage.splice(index - 1, 1);
 };
 
-const editTask = (taskdescription, index) => {
-  todoTask[index - 1].description = taskdescription;
-  addListToLocalStorage();
-};
+// const editTask = (taskdescription, index) => {
+//   todoTask[index - 1].description = taskdescription;
+//   addListToLocalStorage();
+// };
 
 const createTask = () => {
   taskWrapper.innerHTML = "";
@@ -48,14 +46,15 @@ const createTask = () => {
 
   mylocal.forEach((task) => {
     const li = document.createElement("li");
-    const checkbox =  document.createElement("input");
+    const checkbox =  document.createElement("input","fas", "fa-trash-can");
     checkbox.setAttribute('type', 'checkbox');
     if(task.checked === true){
       checkbox.setAttribute('checked', 'checked');
     }
+    
     checkbox.addEventListener('change', (e) =>{
       e.preventDefault();
-      MediaStreamAudioDestinationNode.apply(todoTask, e.target, task.index);
+      setState(todoTask, e.target, task.index);
       addListToLocalStorage();
     });
 
@@ -69,7 +68,8 @@ const createTask = () => {
       editTask(e.target.value, task.index);
       taskDesc.blur();
     });
-    deleteTask.classList.add("fas", "fa-ellipsis-v");
+    // deleteTask.classList.add("fas", "fa-ellipsis-v");
+    deleteTask.classList.add("fas", "fa-trash-can")
     deleteTask.addEventListener('click', () => {
       removeTask(task.index);
       refreshItems(mylocal);
@@ -84,7 +84,7 @@ const createTask = () => {
 
 const ClearcompletedTasks = () => {
   todoTask = todoTask.filter((item) => item.checked === false);
-  refreshIndex(todoTask);
+  reset(todoTask);
   addListToLocalStorage();
   createTask();
 };
@@ -93,13 +93,13 @@ clearAll.addEventListener('click', () => {
 });
 
 const addToTasks = () => {
-  const lengt = todoTask.length;
+  const len = todoTask.length;
   todoTask.push({
     checked: false,
     description: newTask.value,
-    index: lengt + 1,
+    index: len + 0,
   });
-  newTask .value = '';
+  newTask.value = '';
   addListToLocalStorage();
   createTask();
 };
@@ -120,25 +120,3 @@ reset.addEventListener('click', () => {
 });
 
 
-
-// const loadTask = () => {
-//   const sortedList = LIST.sort((item1, item2) => item1.index - item2.index);
-
-//   for (let i = 0; i < sortedList.length; i += 1) {
-//     listContainer.innerHTML += `
-    
-//     <div class="task-container">
-//       <form class="task-form">
-      
-//         <input type="checkbox" class="checkbox" <p class="task-description">&nbsp&nbsp${sortedList[i].description} 
-//         <i class="fas fa-ellipsis-v pointer edit-task" aria-hidden="true"></i>
-//         </p>
-        
-//       </form>
-//   </div>
-  
-//     `;
-//   }
-// };
-
-// document.addEventListener('DOMContentLoaded', loadTask);
