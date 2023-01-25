@@ -93,8 +93,11 @@ input:focus {
 .fa-trash-can {
   padding: 10px;
   margin-left: 150px;
+  cursor: pointer;
 }
-
+.fa-reply{
+  cursor: pointer;
+}
 .todo-input {
   font-style: italic;
   padding-left: 15px;

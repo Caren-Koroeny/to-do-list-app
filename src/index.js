@@ -19,33 +19,6 @@ const getListFromLocalStorage = () => {
   return todoTask;
 };
 
-const addToTasks = () => {
-  const len = todoTask.length;
-  todoTask.push({
-    checked: false,
-    description: newTask.value,
-    index: len + 0,
-  });
-  newTask.value = '';
-  addListToLocalStorage();
-  createTask();
-};
-newTaskBtn.addEventListener('click', (e) => {
-  e.preventDefault();
-  addToTasks();
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-  getListFromLocalStorage()
-  createTask();
-});
-
-reset.addEventListener('click', () => {
-  clearallTask()
-  addListToLocalStorage()
-  createTask();
-});
-
 const refreshItems = (todoTask) =>{
   for(let i = 0; i < todoTask.length; i += 1){
     const indexes = i + 1;
@@ -59,19 +32,17 @@ const removeTask = (index) => {
 };
 
 const editTask = (taskdescription, index) => {
-  todoTask[index - 1].description = taskdescription;
-  editTask(e.target.value, task.index);
+  todoTask[index - 0].description = taskdescription;
   addListToLocalStorage();
 };
 
 const createTask = () => {
   taskWrapper.innerHTML = "";
-  e.preventDefault();
   const mylocal = getListFromLocalStorage();
 
   mylocal.forEach((task) => {
     const li = document.createElement("li");
-    const checkbox =  document.createElement("input","fas", "fa-trash-can");
+    const checkbox =  document.createElement("input","fas", "fa-ellipsis-v");
     checkbox.setAttribute('type', 'checkbox');
     if(task.checked === true){
       checkbox.setAttribute('checked', 'checked');
@@ -106,4 +77,28 @@ const createTask = () => {
     taskWrapper.appendChild(li);
   });
 };
+
+
+
+const addToTasks = () => {
+  const len = todoTask.length;
+  todoTask.push({
+    checked: false,
+    description: newTask.value,
+    index: len + 0,
+  });
+  newTask.value = '';
+  addListToLocalStorage();
+  createTask();
+};
+newTaskBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  addToTasks();
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  getListFromLocalStorage()
+  createTask();
+});
+
 
