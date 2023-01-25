@@ -6,6 +6,9 @@ const newTask = document.getElementById("task-description");
 const newTaskBtn = document.getElementById("addTask");
 const reset = document.getElementById("refresh")
 
+const clearallTask = () => {
+  todoTask = [];
+};
 
 const addListToLocalStorage = () => {
   localStorage.setItem("myTodoTasks", JSON.stringify(todoTask));
@@ -25,24 +28,25 @@ const refreshItems = (todoTask) =>{
     todoTask[i].index = indexes;
   }
 };
-
+// remove/Delete task 
 const removeTask = (index) => {
   const myLocalStorage = getListFromLocalStorage();
-  myLocalStorage.splice(index - 1, 1);
+  myLocalStorage.splice(index, 1);
 };
-
+// Edit Task
 const editTask = (taskdescription, index) => {
-  todoTask[index - 0].description = taskdescription;
+  todoTask[index - 1].description = taskdescription;
+  editTask(e.target.value, task.index,todoTask);
   addListToLocalStorage();
 };
-
+// Display/Read Items
 const createTask = () => {
   taskWrapper.innerHTML = "";
   const mylocal = getListFromLocalStorage();
 
   mylocal.forEach((task) => {
     const li = document.createElement("li");
-    const checkbox =  document.createElement("input","fas", "fa-ellipsis-v");
+    const checkbox =  document.createElement("input","fas", "fa-trash-can");
     checkbox.setAttribute('type', 'checkbox');
     if(task.checked === true){
       checkbox.setAttribute('checked', 'checked');
@@ -61,10 +65,8 @@ const createTask = () => {
     const deleteTask = document.createElement('i');
     taskDesc.addEventListener('change', (e) => {
       e.preventDefault();
-      editTask(e.target.value, task.index);
       taskDesc.blur();
     });
-    // deleteTask.classList.add("fas", "fa-ellipsis-v");
     deleteTask.classList.add("fas", "fa-trash-can")
     deleteTask.addEventListener('click', () => {
       removeTask(task.index);
@@ -78,8 +80,7 @@ const createTask = () => {
   });
 };
 
-
-
+// Create Items
 const addToTasks = () => {
   const len = todoTask.length;
   todoTask.push({
@@ -98,6 +99,12 @@ newTaskBtn.addEventListener('click', (e) => {
 
 document.addEventListener('DOMContentLoaded', () => {
   getListFromLocalStorage()
+  createTask();
+});
+
+reset.addEventListener('click', () => {
+  clearallTask()
+  addListToLocalStorage()
   createTask();
 });
 
