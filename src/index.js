@@ -1,10 +1,15 @@
 import './style.css';
+import  setState  from './modules/checkstate.js';
+
 
 let todoTask = [];
 const taskWrapper = document.querySelector('.todo-activities');
 const newTask = document.getElementById('task-description');
 const newTaskBtn = document.getElementById('new-task');
 const reset = document.getElementById('refresh');
+const clearAll = document.querySelector(".clear-completed-task");
+
+
 
 const clearallTask = () => {
   todoTask = [];
@@ -21,7 +26,7 @@ const getListFromLocalStorage = () => {
 };
 
 const refreshItems = (todoTask) => {
-  for (let i = 1; i < todoTask.length; i += 1) {
+  for (let i = 0; i < todoTask.length; i += 1) {
     const indexes = i + 1;
     todoTask[i].index = indexes;
   }
@@ -49,9 +54,23 @@ const createTask = () => {
       checkbox.setAttribute('checked', 'checked');
     }
 
+    checkbox.addEventListener('change', (e) => {
+      e.preventDefault();
+      setState(todoTask, e.target, task.index);
+      addListToLocalStorage();
+    });
+
     const taskDesc = document.createElement('input');
     taskDesc.classList.add('todotask');
     taskDesc.value = task.description;
+
+
+    // add todo also on enter key event
+  taskDesc.addEventListener("keydown", function (e) {
+    if (e.keyCode === 13) {
+      add.click();
+    }
+  });
 
     const deleteTask = document.createElement('i');
     taskDesc.addEventListener('change', (e) => {
@@ -78,6 +97,16 @@ const createTask = () => {
     taskWrapper.appendChild(li);
   });
 };
+
+const ClearcompletedTasks = () => {
+  todoTask = todoTask.filter((item) => item.checked === false);
+  refreshItems(todoTask);
+  addListToLocalStorage();
+  createTask();
+};
+clearAll.addEventListener('click', () => {
+  ClearcompletedTasks();
+});
 
 const addToTasks = () => {
   const len = todoTask.length;
