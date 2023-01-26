@@ -1,15 +1,12 @@
 import './style.css';
-import  setState  from './modules/checkstate.js';
-
+import setState from './modules/checkstate.js';
 
 let todoTask = [];
 const taskWrapper = document.querySelector('.todo-activities');
 const newTask = document.getElementById('task-description');
 const newTaskBtn = document.getElementById('new-task');
 const reset = document.getElementById('refresh');
-const clearAll = document.querySelector(".clear-completed-task");
-
-
+const clearAll = document.querySelector('.clear-completed-task');
 
 const clearallTask = () => {
   todoTask = [];
@@ -64,13 +61,12 @@ const createTask = () => {
     taskDesc.classList.add('todotask');
     taskDesc.value = task.description;
 
-
     // add todo also on enter key event
-  taskDesc.addEventListener("keydown", function (e) {
-    if (e.keyCode === 13) {
-      add.click();
-    }
-  });
+    taskDesc.addEventListener('keydown', (e, add) => {
+      if (e.keyCode === 13) {
+        add.click();
+      }
+    });
 
     const deleteTask = document.createElement('i');
     taskDesc.addEventListener('change', (e) => {
