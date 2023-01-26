@@ -15,22 +15,18 @@ const addListToLocalStorage = () => {
 };
 const getListFromLocalStorage = () => {
   if (localStorage.getItem('myTodoTasks')) {
-    todoTask = JSON.parse(localStorage.getItem('myTodoTasks'));
+    todoTask = Array.from(JSON.parse(localStorage.getItem('myTodoTasks')));
   }
   return todoTask;
 };
 
 const refreshItems = (todoTask) => {
-  for (let i = 0; i < todoTask.length; i += 1) {
+  for (let i = 1; i < todoTask.length; i += 1) {
     const indexes = i + 1;
     todoTask[i].index = indexes;
   }
 };
-// remove/Delete task
-const removeTask = (index) => {
-  const myLocalStorage = getListFromLocalStorage();
-  myLocalStorage.splice(index - 1, 1);
-};
+// 
 // Edit Task
 const editTask = (taskdescription, index) => {
   for (let j = 0; j < todoTask.length; j += 1) {
@@ -63,12 +59,19 @@ const createTask = () => {
       editTask(e.target.value, task.index);
       taskDesc.blur();
     });
+
     deleteTask.classList.add('fas', 'fa-trash-can');
-    deleteTask.addEventListener('click', () => {
-      removeTask(task.index[0]);
+
+    deleteTask.addEventListener('click', (e) => {
+      const myLocalStorage = getListFromLocalStorage();
+      myLocalStorage.forEach((item, key) => {
+        if (item.description === e.target.parentNode.children[1].value){
+          myLocalStorage.splice(key, 1)
+        }
+      })
       refreshItems(mylocal);
       addListToLocalStorage();
-      createTask();
+      e.target.parentElem
     });
 
     li.append(checkbox, taskDesc, deleteTask);
@@ -108,3 +111,6 @@ reset.addEventListener('click', () => {
   addListToLocalStorage();
   createTask();
 });
+
+
+
