@@ -54,6 +54,10 @@
   margin-left: -40px;
 }
 
+li {
+  list-style: none;
+}
+
 .todo-list > li {
   font-size: 14px;
   font-weight: 300;
@@ -89,6 +93,16 @@ input:focus {
 .task-description {
   padding: 30px;
   font-weight: 500;
+}
+
+.fa-trash-can {
+  padding: 10px;
+  margin-left: 150px;
+  cursor: pointer;
+}
+
+.fa-reply {
+  cursor: pointer;
 }
 
 .todo-input {

@@ -1,43 +1,113 @@
 import './style.css';
 
-const listContainer = document.querySelector('#todo-list');
+let todoTask = [];
+const taskWrapper = document.querySelector('.todo-activities');
+const newTask = document.getElementById('task-description');
+const newTaskBtn = document.getElementById('new-task');
+const reset = document.getElementById('refresh');
 
-const LIST = [
-  {
-    description: 'Read DSA',
-    completed: false,
-    index: 0,
-  },
-  {
-    description: 'Finish my To do App',
-    completed: false,
-    index: 1,
-  },
-  {
-    description: 'Learn new JS FrameWorks',
-    completed: false,
-    index: 2,
-  },
-
-];
-const loadTask = () => {
-  const sortedList = LIST.sort((item1, item2) => item1.index - item2.index);
-
-  for (let i = 0; i < sortedList.length; i += 1) {
-    listContainer.innerHTML += `
-    
-    <div class="task-container">
-      <form class="task-form">
-      
-        <input type="checkbox" class="checkbox" <p class="task-description">&nbsp&nbsp${sortedList[i].description} 
-        <i class="fas fa-ellipsis-v pointer edit-task" aria-hidden="true"></i>
-        </p>
-        
-      </form>
-  </div>
-  
-    `;
-  }
+const clearallTask = () => {
+  todoTask = [];
 };
 
-document.addEventListener('DOMContentLoaded', loadTask);
+const addListToLocalStorage = () => {
+  localStorage.setItem('myTodoTasks', JSON.stringify(todoTask));
+};
+const getListFromLocalStorage = () => {
+  if (localStorage.getItem('myTodoTasks')) {
+    todoTask = Array.from(JSON.parse(localStorage.getItem('myTodoTasks')));
+  }
+  return todoTask;
+};
+
+const refreshItems = (todoTask) => {
+  for (let i = 1; i < todoTask.length; i += 1) {
+    const indexes = i + 1;
+    todoTask[i].index = indexes;
+  }
+};
+//
+// Edit Task
+const editTask = (taskdescription, index) => {
+  for (let j = 0; j < todoTask.length; j += 1) {
+    if (todoTask[j] === index) {
+      todoTask[j] += '*';
+    }
+    todoTask[index - 1].description = taskdescription;
+    addListToLocalStorage();
+  }
+};
+// Read Items
+const createTask = () => {
+  taskWrapper.innerHTML = '';
+  const mylocal = getListFromLocalStorage();
+  mylocal.forEach((task) => {
+    const li = document.createElement('li');
+    const checkbox = document.createElement('input', 'fas', 'fa-trash-can');
+    checkbox.setAttribute('type', 'checkbox');
+    if (task.checked === true) {
+      checkbox.setAttribute('checked', 'checked');
+    }
+
+    const taskDesc = document.createElement('input');
+    taskDesc.classList.add('todotask');
+    taskDesc.value = task.description;
+
+    const deleteTask = document.createElement('i');
+    taskDesc.addEventListener('change', (e) => {
+      e.preventDefault();
+      editTask(e.target.value, task.index);
+      taskDesc.blur();
+    });
+
+    deleteTask.classList.add('fas', 'fa-trash-can');
+
+    deleteTask.addEventListener('click', (e) => {
+      const myLocalStorage = getListFromLocalStorage();
+      myLocalStorage.forEach((item, key) => {
+        if (item.description === e.target.parentNode.children[1].value) {
+          myLocalStorage.splice(key, 1);
+        }
+      });
+      refreshItems(mylocal);
+      addListToLocalStorage();
+      e.target.parentElement.remove();
+    });
+
+    li.append(checkbox, taskDesc, deleteTask);
+    taskWrapper.appendChild(li);
+  });
+};
+
+const addToTasks = () => {
+  const len = todoTask.length;
+  todoTask.push({
+    checked: false,
+    description: newTask.value,
+    index: len + 1,
+  });
+  newTask.value = '';
+  addListToLocalStorage();
+  createTask();
+};
+
+// prevent empty submition
+newTaskBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  const input = document.getElementById('task-description').value;
+  if (input.length === 0) {
+    return false;
+  }
+  return addToTasks();
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  getListFromLocalStorage();
+  createTask();
+});
+
+reset.addEventListener('click', () => {
+  clearallTask();
+  addListToLocalStorage();
+  createTask();
+});
