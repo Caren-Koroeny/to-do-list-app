@@ -71,7 +71,7 @@ const createTask = () => {
       })
       refreshItems(mylocal);
       addListToLocalStorage();
-      e.target.parentElem
+      e.target.parentElement.remove()
     });
 
     li.append(checkbox, taskDesc, deleteTask);
