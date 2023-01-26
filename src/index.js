@@ -26,7 +26,7 @@ const refreshItems = (todoTask) => {
     todoTask[i].index = indexes;
   }
 };
-// 
+//
 // Edit Task
 const editTask = (taskdescription, index) => {
   for (let j = 0; j < todoTask.length; j += 1) {
@@ -65,13 +65,13 @@ const createTask = () => {
     deleteTask.addEventListener('click', (e) => {
       const myLocalStorage = getListFromLocalStorage();
       myLocalStorage.forEach((item, key) => {
-        if (item.description === e.target.parentNode.children[1].value){
-          myLocalStorage.splice(key, 1)
+        if (item.description === e.target.parentNode.children[1].value) {
+          myLocalStorage.splice(key, 1);
         }
-      })
+      });
       refreshItems(mylocal);
       addListToLocalStorage();
-      e.target.parentElement.remove()
+      e.target.parentElement.remove();
     });
 
     li.append(checkbox, taskDesc, deleteTask);
@@ -111,6 +111,3 @@ reset.addEventListener('click', () => {
   addListToLocalStorage();
   createTask();
 });
-
-
-
