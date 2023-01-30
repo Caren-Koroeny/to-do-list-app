@@ -56,7 +56,7 @@
 
 > Link to deployed project.
 
-- [Live Demo](https://caren-koroeny.github.io/to-do-list-app/)
+- [Live Demo](https://caren-koroeny.github.io/to-do-list-app/dist/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
