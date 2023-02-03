@@ -38,7 +38,7 @@ export const display = () => {
     const deleteIcon = document.createElement('i');
     taskDesc.addEventListener('change', (e) => {
       e.preventDefault();
-      editTask(e.target.value, task.index, mylocal);
+      editTask(e.target.value, task.index);
       taskDesc.blur();
     });
 

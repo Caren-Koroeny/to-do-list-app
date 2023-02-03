@@ -1,5 +1,4 @@
 import './style.css';
-import setState from './modules/checkstate.js';
 import { display } from './modules/display.js';
 import { addToTasks } from './modules/addTask';
 import { refreshItems } from './modules/refresh';

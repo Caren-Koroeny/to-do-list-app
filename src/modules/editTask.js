@@ -1,12 +1,14 @@
-import { addListToLocalStorage } from "./localStorage";
+import { addListToLocalStorage, getListFromLocalStorage } from "./localStorage";
 
-export const editTask = (taskdescription, index, todoTask) => {
+const todoTask = getListFromLocalStorage()
+
+export const editTask = (taskdescription, index) => {
     for (let j = 0; j < todoTask.length; j += 1) {
-        console.log(todoTask[j].description, taskdescription, index)
+        console.log(index, taskdescription, todoTask[index - 1].description)
       if (todoTask[j].index === index) {
         todoTask[j] += '*';
       }
       todoTask[index - 1].description = taskdescription;
-      addListToLocalStorage(todoTask);
+      localStorage.setItem('myTodoTasks', JSON.stringify(todoTask))
     }
   };
