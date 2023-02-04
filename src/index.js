@@ -8,6 +8,7 @@ import { getListFromLocalStorage } from './modules/localStorage.js';
 const newTaskBtn = document.getElementById('new-task');
 const reset = document.getElementById('refresh');
 const clearAll = document.querySelector('.clear-completed-task');
+
 const data = getListFromLocalStorage();
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -16,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 clearAll.addEventListener('click', () => {
   ClearcompletedTasks(data);
+  // alert("Removing all")
 });
 
 /* Add a new button */
