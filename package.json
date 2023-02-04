@@ -7,8 +7,9 @@
     "start": "webpack serve --open",
     "build": "webpack",
     "deploy": "gh-pages -d dist",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --watchAll --coverage"
   },
+  "testEnvironment": "jsdom",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Caren-Koroeny/to-do-list-app.git"
@@ -21,12 +22,15 @@
   },
   "homepage": "https://github.com/Caren-Koroeny/to-do-list-app#readme",
   "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.20.11",
     "babel-eslint": "^10.1.0",
     "css-loader": "^6.7.3",
     "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.27.5",
     "html-webpack-plugin": "^5.5.0",
+    "jest": "^29.4.1",
+    "jest-environment-jsdom": "^29.4.1",
     "style-loader": "^3.3.1",
     "stylelint": "^13.13.1",
     "stylelint-config-standard": "^21.0.0",
@@ -34,5 +38,9 @@
     "stylelint-scss": "^3.21.0",
     "webpack-cli": "^5.0.1",
     "webpack-dev-server": "^4.11.1"
+  },
+  "dependencies": {
+    "babel-jest": "^29.4.1",
+    "ts-jest": "^29.0.5"
   }
 }
