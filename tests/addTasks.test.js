@@ -1,26 +1,31 @@
-import createMockDocument from "./mocks/documentMocks";
-import { addToTasks } from "../src/modules/addTask";
-import { display } from "../src/modules/display";
-import { addListToLocalStorage } from "../src/modules/localStorage";
+/**
+ * @jest-environment jsdom
+ */
 
-// function addInputDescription(value, input){
-//     input.value = value;
+import addItem from '../src/modules/__mock__/addMock.js';
+// import LocalStorage from './mocks/localStorage.js';
 
-// }
+describe('addTask', () => {
+  document.body.innerHTML = '<input id="input-task" value="Project completed">';
+  const taskArr = [];
 
-descrie("add new item", () => {
-    it('creates a container element inside the todo-activities', () => {
-        createMockDocument('description-1');
-        addListToLocalStorage.clear()
-        const todoActivites= document.querySelector('.todo-activities');
+  test('Should return taskArr array with object', () => {
+    expect(addItem(taskArr)).toHaveLength(1);
+  });
 
-        addToTasks();
+  //   test('LocalStorage should be updated', () => {
+  //     expect(localStorage.getItem('data')).toHaveLength(1);
+  //   });
 
-        expect(todoActivites.children[0].className).toEqual(
-            (display)
-        );
+  test('check the id', () => {
+    expect(taskArr[0].index).toBe(1);
+  });
 
-    })
-})
+  test('is it completed', () => {
+    expect(taskArr[0].completed).toBe(false);
+  });
 
-
+  test('Description should have the input value', () => {
+    expect(taskArr[0].description).toBe('Project completed');
+  });
+});

@@ -1,4 +1,4 @@
-import LocalStorage from "./mocks/localStorage";
+import LocalStorage from './mocks/localStorage.js';
 
 describe('localStorage', () => {
   it('Adds an item to the mock localStorage', () => {

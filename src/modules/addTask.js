@@ -1,8 +1,9 @@
-import { addListToLocalStorage } from "./localStorage";
-import { display } from "./display.js";   
+import { addListToLocalStorage } from './localStorage.js';
+import display from './display.js';
 
-export const addToTasks = (newTask) => {
-    addListToLocalStorage(newTask);
-    newTask.value = '';
-    display()
-  };
+const addToTasks = (newTask) => {
+  addListToLocalStorage(newTask);
+  newTask.value = '';
+  display();
+};
+export default addToTasks;

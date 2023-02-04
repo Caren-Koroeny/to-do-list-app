@@ -1,12 +1,11 @@
 export default class LocalStorage {
-    constructor() {
-      this.storage = {};
-    }
-  
+  constructor() {
+    this.storage = {};
+  }
+
     setItem = (key, value) => {
       this.storage[key] = value;
     };
-  
+
     getItem = (key) => this.storage[key];
-  }
-  
+}

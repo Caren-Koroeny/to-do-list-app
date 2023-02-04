@@ -1,7 +1,8 @@
-import { display } from "./display";
+import display from './display.js';
 
-export const ClearcompletedTasks = (todoTask) => {
-    todoTask = todoTask.filter((item) => item.checked === false);
-    localStorage.setItem('myTodoTasks', JSON.stringify(todoTask))
-    display()
-  };
+const ClearcompletedTasks = (todoTask) => {
+  todoTask = todoTask.filter((item) => item.checked === false);
+  localStorage.setItem('myTodoTasks', JSON.stringify(todoTask));
+  display();
+};
+export default ClearcompletedTasks;

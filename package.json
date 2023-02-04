@@ -7,7 +7,7 @@
     "start": "webpack serve --open",
     "build": "webpack",
     "deploy": "gh-pages -d dist",
-    "test": "jest --coverage"
+    "test": "jest --watchAll --coverage"
   },
   "testEnvironment": "jsdom",
   "repository": {
@@ -30,6 +30,7 @@
     "eslint-plugin-import": "^2.27.5",
     "html-webpack-plugin": "^5.5.0",
     "jest": "^29.4.1",
+    "jest-environment-jsdom": "^29.4.1",
     "style-loader": "^3.3.1",
     "stylelint": "^13.13.1",
     "stylelint-config-standard": "^21.0.0",
@@ -40,7 +41,6 @@
   },
   "dependencies": {
     "babel-jest": "^29.4.1",
-    "jest-environment-jsdom": "^29.4.1",
     "ts-jest": "^29.0.5"
   }
 }

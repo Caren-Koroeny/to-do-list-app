@@ -1,24 +1,21 @@
 import './style.css';
-import { display } from './modules/display.js';
-import { addToTasks } from './modules/addTask';
-import { refreshItems } from './modules/refresh';
-import { editTask } from './modules/editTask.js';
-import { ClearcompletedTasks } from './modules/clearAll.js';
-import { getListFromLocalStorage } from './modules/localStorage';
+import display from './modules/display.js';
+import addToTasks from './modules/addTask.js';
+import refreshItems from './modules/refresh.js';
+import ClearcompletedTasks from './modules/clearAll.js';
+import { getListFromLocalStorage } from './modules/localStorage.js';
 
 const newTaskBtn = document.getElementById('new-task');
 const reset = document.getElementById('refresh');
 const clearAll = document.querySelector('.clear-completed-task');
 
-const data = getListFromLocalStorage()
+const data = getListFromLocalStorage();
 
 document.addEventListener('DOMContentLoaded', () => {
-  display()
+  display();
 });
 
-
 clearAll.addEventListener('click', () => {
-  
   ClearcompletedTasks(data);
 });
 
@@ -30,9 +27,9 @@ newTaskBtn.addEventListener('click', (e) => {
     return false;
   }
   addToTasks(input);
-  display()
+  return display();
 });
 
-reset.addEventListener('click', (e) => {
-  refreshItems(data)
-})
+reset.addEventListener('click', () => {
+  refreshItems(data);
+});

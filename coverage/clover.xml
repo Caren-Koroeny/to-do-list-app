@@ -1,13 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1675531364099" clover="3.2.0">
-  <project timestamp="1675531364100" name="All files">
-    <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3" elements="7" coveredelements="7" complexity="0" loc="4" ncloc="4" packages="1" files="1" classes="1"/>
-    <file name="localStorage.js" path="/home/caren/microverse-projects/module-2/block-2/to-do-list-app/tests/mocks/localStorage.js">
+<coverage generated="1675536597115" clover="3.2.0">
+  <project timestamp="1675536597115" name="All files">
+    <metrics statements="16" coveredstatements="16" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="6" elements="22" coveredelements="22" complexity="0" loc="16" ncloc="16" packages="2" files="3" classes="3"/>
+    <package name="src.modules.__mock__">
+      <metrics statements="12" coveredstatements="12" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+      <file name="addMock.js" path="/home/caren/microverse-projects/module-2/block-2/to-do-list-app/src/modules/__mock__/addMock.js">
+        <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+      </file>
+      <file name="deleteTasks.js" path="/home/caren/microverse-projects/module-2/block-2/to-do-list-app/src/modules/__mock__/deleteTasks.js">
+        <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="tests.mocks">
       <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
-      <line num="3" count="2" type="stmt"/>
-      <line num="6" count="2" type="stmt"/>
-      <line num="7" count="2" type="stmt"/>
-      <line num="10" count="2" type="stmt"/>
-    </file>
+      <file name="localStorage.js" path="/home/caren/microverse-projects/module-2/block-2/to-do-list-app/tests/mocks/localStorage.js">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="10" count="2" type="stmt"/>
+      </file>
+    </package>
   </project>
 </coverage>

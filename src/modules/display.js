@@ -1,15 +1,14 @@
-import { deletTodoTask } from "./deleteTask.js";
-import { getListFromLocalStorage } from "./localStorage.js";
-import { editTask } from "./editTask.js";
-import setState from "./checkstate.js";
+import deletTodoTask from './deleteTask.js';
+import { getListFromLocalStorage } from './localStorage.js';
+import editTask from './editTask.js';
+import setState from './checkstate.js';
 
 const taskWrapper = document.querySelector('.todo-activities');
 
-
-export const display = () => {
-  const mylocal = getListFromLocalStorage()
+const display = () => {
+  const mylocal = getListFromLocalStorage();
   taskWrapper.innerHTML = '';
- 
+
   mylocal.forEach((task) => {
     const li = document.createElement('li');
     const checkbox = document.createElement('input', 'fas', 'fa-trash-can');
@@ -21,8 +20,7 @@ export const display = () => {
     checkbox.addEventListener('change', (e) => {
       e.preventDefault();
       setState(mylocal, e.target, task.index);
-      localStorage.setItem('myTodoTasks', JSON.stringify(mylocal))
-      
+      localStorage.setItem('myTodoTasks', JSON.stringify(mylocal));
     });
 
     const taskDesc = document.createElement('input');
@@ -43,10 +41,12 @@ export const display = () => {
     });
 
     deleteIcon.classList.add('fas', 'fa-trash-can');
-    
+
     li.append(checkbox, taskDesc, deleteIcon);
     taskWrapper.appendChild(li);
 
     deletTodoTask(deleteIcon);
   });
-}
+};
+
+export default display;
