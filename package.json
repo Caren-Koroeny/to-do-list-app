@@ -9,6 +9,7 @@
     "deploy": "gh-pages -d dist",
     "test": "jest --coverage"
   },
+  "testEnvironment": "jsdom",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Caren-Koroeny/to-do-list-app.git"
@@ -21,6 +22,7 @@
   },
   "homepage": "https://github.com/Caren-Koroeny/to-do-list-app#readme",
   "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.20.11",
     "babel-eslint": "^10.1.0",
     "css-loader": "^6.7.3",
     "eslint": "^7.32.0",
@@ -37,6 +39,8 @@
     "webpack-dev-server": "^4.11.1"
   },
   "dependencies": {
-    "jest-environment-jsdom": "^29.4.1"
+    "babel-jest": "^29.4.1",
+    "jest-environment-jsdom": "^29.4.1",
+    "ts-jest": "^29.0.5"
   }
 }
