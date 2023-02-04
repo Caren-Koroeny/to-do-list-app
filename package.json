@@ -7,7 +7,7 @@
     "start": "webpack serve --open",
     "build": "webpack",
     "deploy": "gh-pages -d dist",
-    "test": "jest --watchAll --coverage"
+    "test": "jest --watchAll"
   },
   "testEnvironment": "jsdom",
   "repository": {
