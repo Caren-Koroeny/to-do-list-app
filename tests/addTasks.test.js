@@ -3,7 +3,6 @@
  */
 
 import addItem from '../src/modules/__mock__/addMock.js';
-// import LocalStorage from './mocks/localStorage.js';
 
 describe('addTask', () => {
   document.body.innerHTML = '<input id="input-task" value="Project completed">';
@@ -12,10 +11,6 @@ describe('addTask', () => {
   test('Should return taskArr array with object', () => {
     expect(addItem(taskArr)).toHaveLength(1);
   });
-
-  //   test('LocalStorage should be updated', () => {
-  //     expect(localStorage.getItem('data')).toHaveLength(1);
-  //   });
 
   test('check the id', () => {
     expect(taskArr[0].index).toBe(1);

@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 clearAll.addEventListener('click', () => {
   ClearcompletedTasks(data);
+  // alert("Removing all")
 });
 
 /* Add a new button */

@@ -27,12 +27,6 @@ const display = () => {
     taskDesc.classList.add('todotask');
     taskDesc.value = task.description;
 
-    taskDesc.addEventListener('keydown', (e, add) => {
-      if (e.keyCode === 13) {
-        add.click();
-      }
-    });
-
     const deleteIcon = document.createElement('i');
     taskDesc.addEventListener('change', (e) => {
       e.preventDefault();
