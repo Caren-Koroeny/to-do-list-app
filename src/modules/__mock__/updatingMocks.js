@@ -1,5 +1,3 @@
-import LocalStorage from "../../../tests/mocks/localStorage";
-
 const completed = (task, index) => {
   task[index].completed = !task[index].completed;
   localStorage.setItem('data', task);
